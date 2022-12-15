@@ -35,9 +35,6 @@ class Gestionusuario extends Component
             $this->user=new user();
             $this->rolesall=Role::all();
             $this->allpermisos=permission::all(); 
-
-
-    
         }
         public function render(){
             $this->permisosdirectos=$this->allpermisos->diff($this->user->getPermissionsViaRoles());

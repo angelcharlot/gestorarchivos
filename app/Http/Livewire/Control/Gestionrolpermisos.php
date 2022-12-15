@@ -4,8 +4,6 @@ namespace App\Http\Livewire\Control;
 use Livewire\Component;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-
-
 class Gestionrolpermisos extends Component
 {
 

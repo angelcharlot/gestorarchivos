@@ -8,7 +8,6 @@
          nuevo rol 
         </x-jet-button> --}}
     </div>
-
     <div class=" grid grid-cols-6 ">
         <div class=" col-span-2">
 

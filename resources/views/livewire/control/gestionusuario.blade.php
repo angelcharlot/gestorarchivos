@@ -32,7 +32,6 @@
 
             @default
             @endswitch
-
         </div>
         <div id="listado" class=" col-span-4">
             <div class="w-10/12  mx-auto  ">

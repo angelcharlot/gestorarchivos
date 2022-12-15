@@ -3,7 +3,6 @@
         <div class=" text-3xl text-center text-gray-800 w-full font-extrabold">Departamentos y categorias</div>
         <div class=" w-full flex justify-between mb-7 mt-5 ">
 
-
         </div>
         @switch($formulario)
             @case(1)
