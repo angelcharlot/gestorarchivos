@@ -6,9 +6,6 @@ use Livewire\Component;
 use App\Models\user;
 use App\Models\departamento;
 use App\Models\categoria;
-
-
-
 class Gestionperycat extends Component
 {
     public $departamentos,$categorias,$users;
