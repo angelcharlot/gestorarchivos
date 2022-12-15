@@ -93,6 +93,5 @@ return array(
     'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
     'BaconQrCode\\' => array($vendorDir . '/bacon/bacon-qr-code/src'),
     'Asm89\\Stack\\' => array($vendorDir . '/asm89/stack-cors/src'),
-    'Asantibanez\\LaravelBladeSortable\\' => array($vendorDir . '/asantibanez/laravel-blade-sortable/src'),
     'App\\' => array($baseDir . '/app'),
 );
