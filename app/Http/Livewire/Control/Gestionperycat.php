@@ -21,12 +21,18 @@ class Gestionperycat extends Component
     public $name_categoria;
     public $formulario=1;
     public $area_booton=0;
+    public $todosUserDepartamento;
     
     public function mount(){
         $this->users=user::all();
         $this->categorias=new Collection();
     }
-    
+    public function updatingtodosUserDepartamento(){
+        dd($this->departamento_select->users);
+        foreach ($this->departamento_select->users as $key => $value) {
+            $this->array_user[]=$value->id;
+        }
+    }
     public function render()
     {   
         $userss=$this->users->paginate(10,null,null,'userpage');

@@ -1,5 +1,8 @@
 <div class="w-full p-5">
     <div class="w-full text-lg text-gray-700 text-center">usuarios agrupados({{ $departamento_select->name }})</div>
+    <div class="w-full py-1 text-md ml-5 text-gray-800">
+    <input wire:model='todosUserDepartamento' value="todo" type="checkbox"> seleccionar Todos
+    </div>
     @foreach ($userss as $usuario)
         <div class="w-full py-1 text-md ml-5 text-gray-800">
 

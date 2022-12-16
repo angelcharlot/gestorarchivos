@@ -24,11 +24,12 @@ class DatabaseSeeder extends Seeder
         $role2 = Role::create(['name' => 'admin']);
         $user = Role::create(['name' => 'user']);
         //barra de navegacion
-        $Permission1 = Permission::create(['name' => 'nav.link.panel','descrip'=>'panel','seccion'=>'Barra de navegacion'])->assignRole($user,$role2);//linl de panel o dasboart
+        $Permission1 = Permission::create(['name' => 'nav.link.panel','descrip'=>'panel','seccion'=>'Barra de navegacion'])->assignRole($role2);//linl de panel o dasboart
+        $Permission3 = Permission::create(['name' => 'nav.link.archivos','descrip'=>'Gestionar Archivos','seccion'=>'Barra de navegacion'])->assignRole($user,$role2);//link de archivos en el panel en panel
         //panel
         $Permission2 = Permission::create(['name' => 'panel.user','descrip'=>'Gestionar usuario','seccion'=>'Panel de Control'])->assignRole($role2);//link de usuarios en panel
         $Permission3 = Permission::create(['name' => 'panel.rolyper','descrip'=>'Gestionar roles y permisos','seccion'=>'Panel de Control'])->assignRole($role2);//link de roles y permisos en panel
-        $Permission3 = Permission::create(['name' => 'panel.archivos','descrip'=>'Gestionar Archivos','seccion'=>'Panel de Control'])->assignRole($role2);//link de archivos en el panel en panel
+       
         //user
         $Permission4 = Permission::create(['name' => 'user.create','descrip'=>'crear usuario','seccion'=>'Vista de usuario'])->assignRole($role2);//crear usuario
         $Permission5 = Permission::create(['name' => 'user.update','descrip'=>'actializar usuario','seccion'=>'Vista de usuario'])->assignRole($role2);//actualizar usuario
@@ -49,9 +50,16 @@ class DatabaseSeeder extends Seeder
         $SuperUsuario->password=Hash::make('admin');
         $SuperUsuario->save();
         $SuperUsuario->assignRole('SuperUsuario');
-         $users=\App\Models\User::factory(100)->create();
-
+        $users=\App\Models\User::factory(100)->create();
+        
         foreach ($users as $key => $user) {
+            if ($key==0) {
+                $user->name='prueba';
+                $user->email="prueba@prueba.com";
+                $user->password=Hash::make('prueba');
+                $user->save();
+                $user->assignRole('user');
+            }
             $user->assignRole('user');
         }
         
