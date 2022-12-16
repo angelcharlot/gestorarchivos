@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Livewire\Control;
-
 use Livewire\Component;
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
