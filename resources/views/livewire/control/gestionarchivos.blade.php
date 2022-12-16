@@ -12,6 +12,7 @@
         </div>
     </div>
 
+   
     <div class="w-full gap-3 grid grid-cols-12 ">
         <div class=" col-span-4  border rounded-md border-gray-200">
             <div class="my-5  h-56 p-5 ">

@@ -18,7 +18,7 @@
                     <td><i class="bi bi-trash3"></i></td>
                     <td><i class="bi bi-pencil"></i></td>
                 </tr>
-                @foreach ($usuarios_para_compartir as $key => $usuario)
+                @foreach ($usuarios_para_compartirr as $key => $usuario)
                     <tr>
                         <td><input type="checkbox" wire:model='lista_de_usuario.{{ $key }}.user'
                                 value="{{$usuario->id}}"></td>
@@ -30,6 +30,7 @@
                     </tr>
                 @endforeach
             </table>
+            {{ $usuarios_para_compartirr->links() }}
         @else
             <x-jet-input type="text" class="w-full " wire:model='usuario_unico' />
             <div>

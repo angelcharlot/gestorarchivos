@@ -10,11 +10,16 @@ use App\models\user;
 use Illuminate\Database\Eloquent\Collection;
 use App\models\categoria;
 use Spatie\Permission\Models\Permission;
+use Livewire\WithPagination;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 
 
 class Gestionarchivos extends Component
 {
+    
     use WithFileUploads;
+    use WithPagination;
     public $usuario_unico;
    
     public $lista_de_usuario=[];
@@ -41,8 +46,24 @@ class Gestionarchivos extends Component
     public function render()
     {
         $this->archivos=auth()->user()->archivos;
+
         
-        return view('livewire.control.gestionarchivos');
+       //paginacion de usuarios para permisologia
+        $x=$this->usuarios_para_compartir;
+        $perPage = 10;
+        $currentPage="vista_usuario";
+        $collection = $x;
+        
+        $items = $collection->forPage($this->page, $perPage);
+       
+        $usuarios_para_compartirr = new LengthAwarePaginator($items, $collection->count(), $perPage, $this->page,[
+            'path' => Paginator::resolveCurrentPath(),
+            'pageName' => 'lista_usuario',
+        ]);
+
+
+        
+        return view('livewire.control.gestionarchivos',compact('usuarios_para_compartirr'));
     }
     public function save()
     {
@@ -80,9 +101,6 @@ class Gestionarchivos extends Component
         $this->archivo_select=$archivo;
         $this->vista_permisos=1;
         $this->usuarios_para_compartir=new Collection();
-
-       
-
 
     }
     public function cargar_usuario(){
