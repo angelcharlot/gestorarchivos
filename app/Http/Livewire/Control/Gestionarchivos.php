@@ -12,8 +12,7 @@ use App\models\categoria;
 use Spatie\Permission\Models\Permission;
 use Livewire\WithPagination;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Pagination\Paginator;
-
+use Illuminate\Http\Request;
 
 class Gestionarchivos extends Component
 {
@@ -43,27 +42,20 @@ class Gestionarchivos extends Component
         $this->categorias= auth()->user()->categorias;
         $this->usuarios_para_compartir=new Collection();
     }
-    public function render()
+    public function render(Request $request)
     {
         $this->archivos=auth()->user()->archivos;
-
-        
-       //paginacion de usuarios para permisologia
-        $x=$this->usuarios_para_compartir;
-        $perPage = 10;
-        $currentPage="vista_usuario";
-        $collection = $x;
-        
-        $items = $collection->forPage($this->page, $perPage);
        
-        $usuarios_para_compartirr = new LengthAwarePaginator($items, $collection->count(), $perPage, $this->page,[
-            'path' => Paginator::resolveCurrentPath(),
-            'pageName' => 'lista_usuario',
-        ]);
-
-
-        
-        return view('livewire.control.gestionarchivos',compact('usuarios_para_compartirr'));
+       /*  $x=$this->usuarios_para_compartir;
+        $perPage = 10;
+        $collection = $x;
+        $items = $collection->forPage($this->page, $perPage);
+        $usuarios_para_compartirr = new LengthAwarePaginator($items, $collection->count(), $perPage, $this->page);
+        $usuarios_para_compartirr->setPageName('pageusuario'); */
+       
+        $usuarios_para_compartirr=$this->usuarios_para_compartir->paginate(10,null,null,'userpage');
+        $archivoss=$this->archivos->paginate(16,null,null,'archivopage');
+        return view('livewire.control.gestionarchivos',compact('usuarios_para_compartirr','archivoss'));
     }
     public function save()
     {
@@ -112,6 +104,7 @@ class Gestionarchivos extends Component
             switch ($this->tipo_de_permiso) {
                 case 'departamentos':
                     $this->usuarios_para_compartir=$this->archivo_select->categoria->departamento->users;
+                    
                     foreach ($this->usuarios_para_compartir as $key => $usuario) {
                         if ($usuario->archivos->find($this->archivo_select->id)) {
                             $this->lista_de_usuario[$key]['user']=$usuario->id;

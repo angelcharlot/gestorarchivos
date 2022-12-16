@@ -31,12 +31,17 @@
 
             </div>
         </div>
-        <div class=" col-span-8 border rounded-md border-gray-200 ">
+        <div class=" col-span-8  border rounded-md border-gray-200 ">
+            <div class="h-68">
             @if ($vista == 0)
                 @include('livewire.control.archivo.vista-cuadro')
             @else
                 @include('livewire.control.archivo.vista-lista')
             @endif
+            </div>
+            <div class=" relative top-0">
+                {{$archivoss->links()}}
+            </div>
         </div>
         <div class="col-span-6 border rounded-md border-gray-200">
             @if ($vista_permisos==1)

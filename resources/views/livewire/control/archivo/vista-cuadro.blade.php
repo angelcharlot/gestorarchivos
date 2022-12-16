@@ -1,6 +1,6 @@
-<div class=" p-2  gap-3 grid grid-cols-8 ">
+<div class=" p-2   gap-3 grid grid-cols-8 ">
 
-    @foreach ($archivosx as $iten)
+    @foreach ($archivoss as $iten)
         <div class="p-2 border border-gray-300 rounded-md pt-2">
             @if ($iten->extencion == 'jpg' or  $iten->extencion == 'png')
                 <img class="h-16 mx-auto  object-scale-down" src="{{ asset($iten->url) }}" alt="">
@@ -18,7 +18,7 @@
 
         </div>
     @endforeach
-
- 
+      
+   
 
 </div>

@@ -6,8 +6,11 @@ use Livewire\Component;
 use App\Models\user;
 use App\Models\departamento;
 use App\Models\categoria;
+use Livewire\WithPagination;
+use Illuminate\Database\Eloquent\Collection;
 class Gestionperycat extends Component
 {
+    use WithPagination;
     public $departamentos,$categorias,$users;
     public $array_departamentos=[];
     public $array_categorias=[];
@@ -21,15 +24,16 @@ class Gestionperycat extends Component
     
     public function mount(){
         $this->users=user::all();
+        $this->categorias=new Collection();
     }
     
     public function render()
     {   
-        $users=$this->users;
+        $userss=$this->users->paginate(10,null,null,'userpage');
         $this->departamentos=departamento::all();
         
-        $categorias=$this->categorias;
-        return view('livewire.control.gestionperycat',compact('categorias','users'));
+        $categoriass=$this->categorias->paginate(5,null,null,'catpage');
+        return view('livewire.control.gestionperycat',compact('categoriass','userss'));
     }
     public function store_departamento(){
         $departamento=new departamento();

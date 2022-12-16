@@ -68,7 +68,7 @@
                     @case(3)
                     @include('livewire.control.departamentos_y_categorias.lista_de_users_para_categoria')
                     @break
-                    lista_de_users_para_categoria
+                   
                     @case(2)
                     @include('livewire.control.departamentos_y_categorias.lista_users')
                     @break

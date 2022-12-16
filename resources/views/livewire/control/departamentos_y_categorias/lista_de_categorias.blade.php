@@ -12,7 +12,7 @@
         <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
             Acciones</td>
     </tr>
-    @foreach ($categorias as $item)
+    @foreach ($categoriass as $item)
         <tr>
             <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
                 {{ $key + 1 }}</td>
@@ -31,5 +31,6 @@
             </td>
         </tr>
     @endforeach
-</table>
+   
+</table> {{$categoriass->links()}}
 </div>
