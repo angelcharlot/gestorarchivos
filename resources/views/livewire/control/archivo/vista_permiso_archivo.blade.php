@@ -17,18 +17,27 @@
                     <td><i class="bi bi-people-fill"></i></td>
                     <td><i class="bi bi-trash3"></i></td>
                     <td><i class="bi bi-pencil"></i></td>
+                    <td><i class="bi bi-share"></i></td>
                 </tr>
               
                 @foreach ($usuarios_para_compartirr as $key => $usuario)
                 
                     <tr>
-                        <td><input type="checkbox" wire:model='lista_de_usuario.{{ $key }}.user'
-                                value="{{$usuario->id}}"></td>
-                        <td> {{ $usuario->email }}{{ $usuario->id }}</td>
-                        <td><input type="checkbox" wire:model='lista_de_usuario.{{ $key }}.p_delete'
-                                value="{{ $archivo_select->p_delete }}"></td>
-                        <td><input type="checkbox" wire:model='lista_de_usuario.{{ $key }}.p_update'
-                                value="{{ $archivo_select->p_update }}"></td>
+                        <td>
+                            <input type="checkbox" wire:model='lista_de_usuario.{{ $key }}.user' value="{{$usuario->id}}">
+                        </td>
+                        <td> 
+                            {{ $usuario->email }}{{ $usuario->id }}
+                        </td>
+                        <td>
+                            <input type="checkbox" wire:model='lista_de_usuario.{{ $key }}.p_delete' value="{{ $archivo_select->p_delete }}">
+                        </td>
+                        <td>
+                            <input type="checkbox" wire:model='lista_de_usuario.{{ $key }}.p_update' value="{{ $archivo_select->p_update }}">
+                        </td>
+                        <td>
+                            <input type="checkbox" wire:model='lista_de_usuario.{{ $key }}.p_share' value="{{ $archivo_select->p_share }}">
+                        </td>
                     </tr>
                 @endforeach
             </table>

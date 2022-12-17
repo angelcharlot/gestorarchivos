@@ -62,7 +62,7 @@
 
 
                     @foreach ($user->roles()->pluck('name') as $item)
-                    {{$item,}}
+                    {{$item}}
                     @endforeach
 
                 </div>

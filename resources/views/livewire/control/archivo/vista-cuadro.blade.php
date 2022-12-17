@@ -12,9 +12,9 @@
                     {{ $iten->name }}
                 </div>
             @endif
-
+            @can($iten->p_share)
             <div class=" text-white "><i wire:click='dar_permiso({{$iten->id}})' class="bi bi-share rounded-md px-1 m-1 bg-blue-600 border border-blue-700 hover:bg-blue-500 "></i></div>
-
+            @endcan
 
         </div>
     @endforeach

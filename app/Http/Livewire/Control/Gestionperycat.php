@@ -27,11 +27,19 @@ class Gestionperycat extends Component
         $this->users=user::all();
         $this->categorias=new Collection();
     }
-    public function updatingtodosUserDepartamento(){
-        dd($this->departamento_select->users);
-        foreach ($this->departamento_select->users as $key => $value) {
+    public function updatedtodosUserDepartamento(){
+       // dd($this->todosUserDepartamento);
+        if($this->todosUserDepartamento){
+           foreach ($this->users as $key => $value) {
             $this->array_user[]=$value->id;
+        } 
+        }else{
+            $this->array_user=[];
+                /*foreach ($this->departamento_select->users as $key => $value) {
+                    $this->array_user[]=$value->id;
+                } */
         }
+        
     }
     public function render()
     {   
