@@ -12,7 +12,7 @@
         </div>
     </div>
 
-   
+
     <div class="w-full gap-3 grid grid-cols-12 ">
         <div class=" col-span-4  border rounded-md border-gray-200">
             <div class="my-5  h-56 p-5 ">
@@ -33,23 +33,34 @@
         </div>
         <div class=" col-span-8  border rounded-md border-gray-200 ">
             <div class="h-68">
-            @if ($vista == 0)
-                @include('livewire.control.archivo.vista-cuadro')
-            @else
-                @include('livewire.control.archivo.vista-lista')
-            @endif
+                @if ($vista == 0)
+                    @include('livewire.control.archivo.vista-cuadro')
+                @else
+                    @include('livewire.control.archivo.vista-lista')
+                @endif
             </div>
             <div class=" relative top-0">
-                {{$archivoss->links()}}
+                {{ $archivoss->links() }}
             </div>
         </div>
         <div class="col-span-6 border rounded-md border-gray-200">
-            @if ($vista_permisos==1)
-            @include('livewire.control.archivo.vista_permiso_archivo')
+            @if ($vista_permisos == 1)
+                @include('livewire.control.archivo.vista_permiso_archivo')
+            @endif
+            @if ($vista_permisos == 2)
+                @include('livewire.control.archivo.info')
             @endif
         </div>
 
     </div>
+      <div class="w-full">
+         @if ($archivo_select)
+            <object type="application/pdf" data="{{asset($archivo_select->url)}}" class="w-full h-screen" >
+            </object>
+        @endif
+      
+    </div> 
+    
 
 
 

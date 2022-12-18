@@ -66,6 +66,7 @@ class Gestionarchivos extends Component
         $file->name = $this->archivo->getClientOriginalName();
         $file->extencion = $this->archivo->getClientOriginalExtension();
         $file->categoria_id = $this->categoria_select;
+        $file->user_id = auth()->user()->id;
         //permiso de eliminar
         $permiso_delete = new Permission();
         $permiso_delete->name = uniqid('p_delete_archivo-') . $this->archivo->getClientOriginalName();
@@ -100,6 +101,11 @@ class Gestionarchivos extends Component
         $this->archivo_select = $archivo;
         $this->vista_permisos = 1;
         $this->usuarios_para_compartir = new Collection();
+
+    }
+    public function info(archivo $archivo){
+        $this->archivo_select = $archivo;
+        $this->vista_permisos = 2;
 
     }
     public function cargar_usuario()

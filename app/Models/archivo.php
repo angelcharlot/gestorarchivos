@@ -20,6 +20,10 @@ class archivo extends Model
         {
             return $this->belongsToMany('App\Models\user');
         }
+        public function user()
+        {
+            return $this->belongsTo('App\Models\user');
+        }
 
 
 
