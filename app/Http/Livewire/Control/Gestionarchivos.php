@@ -11,6 +11,7 @@ use Spatie\Permission\Models\Permission;
 use Livewire\WithPagination;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class Gestionarchivos extends Component
 {
@@ -87,6 +88,15 @@ class Gestionarchivos extends Component
         $permiso_share->save();
 
         $file->save();
+        if ($file->extencion=='pdf') {
+            $archivo2 = public_path($file->url);
+            Storage::makeDirectory('public/archivos/'.$file->id);
+            $archivo_img=public_path('storage/archivos/'.$file->id.'/'.$file->id.'.jpg');
+            $comando="magick convert -density 300 -quality 96  ".$archivo2." ".$archivo_img;
+            shell_exec($comando);
+        }
+        
+        
         $file->users()->sync(auth()->user()->id);
 
         auth()->user()->givePermissionTo($permiso_update);

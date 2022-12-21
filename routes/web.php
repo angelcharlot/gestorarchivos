@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
+use App\Models\archivo;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,7 +21,25 @@ Route::get('/', function () {
 //prubas 
 Route::get('/pruebas', function () {
     
-dd(Storage::disk());
+/*     $imagick = new Imagick();
+   //dd(Storage::disk('public')->url('archivos/92Ue0KWMAEzAwGK6Wr0hdUDyVtPwLO0PBTVQm7sx.pdf'));
+    $imagick->readImage(Storage::disk('public')->url('archivos/92Ue0KWMAEzAwGK6Wr0hdUDyVtPwLO0PBTVQm7sx.pdf')); */
+
+    $archivo=archivo::find(3);
+    
+    $archivo2 = public_path($archivo->url);
+    //dd($archivo2);
+    $archivo_img=public_path('storage/archivos/prueba_definitiva.jpg');
+    $comando="magick convert -density 300 -quality 96 ".$archivo2." ".$archivo_img;
+     
+    //dd($comando);
+    $respuesta=shell_exec($comando);
+    dd($respuesta);
+  /*   $image=imagecreatefromjpeg("$img_path/$file_name.jpg");
+    header('Content-Type: image/jpeg');
+    imagejpeg($image);
+    unlink("$img_path/$file_name.jpg"); */
+
 
 })->name('pruebas');
 //----------------------------------
@@ -36,5 +55,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/files', function () {
 })->name('Files');
 //---------------------------------------
 
-
+//archivo
+Route::middleware(['auth:sanctum', 'verified'])->get('/archivo/{id}', function ($id) {
+  return view('viewarchivo.index',['id' => $id]);
+})->name('archivo');
+//---------------------------------------
 

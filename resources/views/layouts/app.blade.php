@@ -29,6 +29,7 @@
     </footer>
     @stack('modals')
     <script src="{{ mix('js/app.js') }}" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
     @livewireScripts
     @yield('js')
 </body>

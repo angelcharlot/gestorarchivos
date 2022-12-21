@@ -1,4 +1,4 @@
-<div class="w-10/12 mx-auto">
+<div class="w-10/12 mx-auto" >
     <div class="w-full text-3xl text-center font-bold">Documentos</div>
     <div class=" w-full flex justify-between mb-7 ">
         <h1>Gerstion de archivos y carpetas</h1>
@@ -53,11 +53,11 @@
         </div>
 
     </div>
-      <div class="w-full">
-         @if ($archivo_select)
-            <object type="application/pdf" data="{{asset($archivo_select->url)}}" class="w-full h-screen" >
-            </object>
-        @endif
+      <div class="w-full" oncontextmenu="return false">
+        
+ 
+            
+     
       
     </div> 
     

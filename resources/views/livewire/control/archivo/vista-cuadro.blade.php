@@ -22,11 +22,15 @@
                         class="bi bi-info-circle   rounded-md px-1 m-1 bg-blue-600 border border-blue-700 hover:bg-blue-500 "></i>
                         
                 </div>
+                <div class=" text-white  "> <a href="{{route('archivo',$iten->id)}}"> <i 
+                    class="bi bi-eye   rounded-md px-1 m-1 bg-blue-600 border border-blue-700 hover:bg-blue-500 "></i>
+                </a>
+            </div>
               
             </div>
         </div>
     @endforeach
 
-
+    
 
 </div>
