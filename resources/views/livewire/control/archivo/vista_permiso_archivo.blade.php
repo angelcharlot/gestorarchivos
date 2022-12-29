@@ -18,6 +18,7 @@
                     <td><i class="bi bi-trash3"></i></td>
                     <td><i class="bi bi-pencil"></i></td>
                     <td><i class="bi bi-share"></i></td>
+                    
                 </tr>
               
                 @foreach ($usuarios_para_compartirr as $key => $usuario)
@@ -38,6 +39,7 @@
                         <td>
                             <input type="checkbox" wire:model='lista_de_usuario.{{ $key }}.p_share' value="{{ $archivo_select->p_share }}">
                         </td>
+                        
                     </tr>
                 @endforeach
             </table>

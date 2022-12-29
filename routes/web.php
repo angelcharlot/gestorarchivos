@@ -50,13 +50,13 @@ Route::middleware(['auth:sanctum', 'verified','ver_panel'])->get('/dashboard', f
 //---------------------------------------
 
 //dashboard o panel (protegida por autentificacion y permisos)
-Route::middleware(['auth:sanctum', 'verified'])->get('/files', function () {
+Route::middleware(['auth:sanctum', 'verified','ver_file'])->get('/files', function () {
     return view('Files.index');
 })->name('Files');
 //---------------------------------------
 
 //archivo
-Route::middleware(['auth:sanctum', 'verified'])->get('/archivo/{id}', function ($id) {
+Route::middleware(['auth:sanctum', 'verified','ver_archivo'])->get('/archivo/{id}', function ($id) {
   return view('viewarchivo.index',['id' => $id]);
 })->name('archivo');
 //---------------------------------------

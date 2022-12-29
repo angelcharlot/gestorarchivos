@@ -86,9 +86,16 @@ class Gestionarchivos extends Component
         $permiso_share->guard_name = "web";
         $file->p_share = $permiso_share->name;
         $permiso_share->save();
+         //permiso de ver
+        $permiso_see = new Permission();
+        $permiso_see->name = uniqid('p_see_archivo-') . $this->archivo->getClientOriginalName();
+        $permiso_see->guard_name = "web";
+        $file->p_see = $permiso_see->name;
+        $permiso_see->save();
 
         $file->save();
         if ($file->extencion=='pdf') {
+            set_time_limit(120);
             $archivo2 = public_path($file->url);
             Storage::makeDirectory('public/archivos/'.$file->id);
             $archivo_img=public_path('storage/archivos/'.$file->id.'/'.$file->id.'.jpg');
@@ -102,6 +109,7 @@ class Gestionarchivos extends Component
         auth()->user()->givePermissionTo($permiso_update);
         auth()->user()->givePermissionTo($permiso_delete);
         auth()->user()->givePermissionTo($permiso_share);
+        auth()->user()->givePermissionTo($permiso_see);
 
 
 
@@ -191,6 +199,9 @@ class Gestionarchivos extends Component
 
                             if (!$user->archivos->find($this->archivo_select->id)) {
                                 $user->archivos()->attach($this->archivo_select);
+                                $permiso=permission::where('name','=',$this->archivo_select->p_see)->first();
+                               
+                                $user->givePermissionTo($permiso);
                             }
                             //--------------------------------------------------------------
 
@@ -240,6 +251,7 @@ class Gestionarchivos extends Component
                             $this->usuarios_para_compartir[$key]->revokePermissionTo($this->archivo_select->p_update);
                             $this->usuarios_para_compartir[$key]->revokePermissionTo($this->archivo_select->p_delete);
                             $this->usuarios_para_compartir[$key]->revokePermissionTo($this->archivo_select->p_share);
+                            $this->usuarios_para_compartir[$key]->revokePermissionTo($this->archivo_select->p_see);
                         }
                     }
 
